@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tipos de Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Tipos de Usuário</h1>
+    <a href="/tipos-usuario/form">Adicionar Novo Tipo</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tipo : ${tipos}">
+                <td th:text="${tipo.id}"></td>
+                <td th:text="${tipo.nome}"></td>
+                <td>
+                    <a th:href="@{/tipos-usuario/form(id=${tipo.id})}">Editar</a>
+                    <a th:href="@{/tipos-usuario/delete(id=${tipo.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

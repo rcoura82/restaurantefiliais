@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Tipo de Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1 th:text="${tipo.id != null ? 'Editar Tipo de Usuário' : 'Novo Tipo de Usuário'}"></h1>
+    <form th:action="@{/tipos-usuario/save}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/tipos-usuario">Voltar</a>
+</body>
+</html>

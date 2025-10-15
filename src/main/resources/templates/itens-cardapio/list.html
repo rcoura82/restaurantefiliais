@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Itens do Cardápio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Itens do Cardápio</h1>
+    <a href="/itens-cardapio/form">Adicionar Novo Item</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Disponível no Local</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${itens}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.nome}"></td>
+                <td th:text="${item.descricao}"></td>
+                <td th:text="${item.preco}"></td>
+                <td th:text="${item.disponivelSomenteNoLocal ? 'Sim' : 'Não'}"></td>
+                <td>
+                    <a th:href="@{/itens-cardapio/form(id=${item.id})}">Editar</a>
+                    <a th:href="@{/itens-cardapio/delete(id=${item.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

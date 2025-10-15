@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurantes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Restaurantes</h1>
+    <a href="/restaurantes/form">Adicionar Novo Restaurante</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Tipo de Cozinha</th>
+                <th>Horário</th>
+                <th>Dono</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="restaurante : ${restaurantes}">
+                <td th:text="${restaurante.id}"></td>
+                <td th:text="${restaurante.nome}"></td>
+                <td th:text="${restaurante.endereco}"></td>
+                <td th:text="${restaurante.tipoCozinha}"></td>
+                <td th:text="${restaurante.horarioFuncionamento}"></td>
+                <td th:text="${restaurante.dono.nome}"></td>
+                <td>
+                    <a th:href="@{/restaurantes/form(id=${restaurante.id})}">Editar</a>
+                    <a th:href="@{/restaurantes/delete(id=${restaurante.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
